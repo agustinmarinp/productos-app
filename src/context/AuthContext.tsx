@@ -42,7 +42,9 @@ export const AuthProvider = ({children}: any) => {
     const token = await AsyncStorage.getItem('token');
 
     // No token, no autenticado
-    if (!token) return dispatch({type: 'notAuthenticated'});
+    if (!token) {
+      return dispatch({type: 'notAuthenticated'});
+    }
 
     // Hay token
     const resp = await cafeApi.get('/auth');
